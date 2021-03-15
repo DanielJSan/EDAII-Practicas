@@ -147,20 +147,75 @@ int numHijoUnico(Arbol raiz) {
 
 }
 
-Arbol buscarMax(Arbol raiz) {
+Arbol buscarMax(Arbol raiz) { //Not working
+  Arbol Tmp;
 
+  if(raiz != NULL) {
+
+    if (raiz->izq != NULL) { 
+
+      Tmp = buscarMax(raiz->izq);
+      if(Tmp->info > raiz->info) { return Tmp; }
+
+    }
+    if (raiz->der != NULL) { 
+
+      Tmp = buscarMax(raiz->der);
+      if(Tmp->info > raiz->info) { return Tmp; }
+
+    }
+
+    
+  }
+
+  return raiz;
 }
 
-Arbol buscarMin(Arbol raiz) {
+Arbol buscarMin(Arbol raiz) { //Not working
+  Arbol Tmp;
 
+  if(raiz != NULL) {
+
+    if (raiz->izq != NULL) { 
+
+      Tmp = buscarMin(raiz->izq);
+      if(Tmp->info < raiz->info) { return Tmp; }
+
+    }
+    if (raiz->der != NULL) { 
+
+      Tmp = buscarMin(raiz->der);
+      if(Tmp->info < raiz->info) { return Tmp; }
+
+    }
+
+    return raiz;
+  }
 }
 
 int similares(Arbol r1,Arbol r2) {
 
+  if(r1 == NULL && r2 == NULL) {
+    return 1;
+  }
+
+  if(r1 != NULL && r2 != NULL) {
+    return (similares(r1->izq, r2->izq) && similares(r1->der, r2->der));
+  }
+
+  return 0;
 }
 
 int equivalentes(Arbol r1,Arbol r2) {
+  if(r1 == NULL && r2 == NULL) {
+    return 1;
+  }
 
+  if(r1 != NULL && r2 != NULL) {
+    return (r1->info == r2->info && similares(r1->izq, r2->izq) && similares(r1->der, r2->der));
+  }
+
+  return 0;
 }
 
 Arbol especular(Arbol raiz) {

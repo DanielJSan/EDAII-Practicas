@@ -4,7 +4,7 @@
 #include "arbol.h"
 
 int main(void)
-{ Arbol varArbol;
+{ Arbol varArbol, Tmp;
 
 /* Creación arbol ejemplo de las transparencias de recorridos */
   varArbol = creaNodo('A');
@@ -33,10 +33,17 @@ int main(void)
 /* Comenzar a implementar y probar las funciones del ejercicio 2 ... y segunda parte del ejercicio 3 */
   printf("Altura: %d\n", altura(varArbol));
   printf("Numero de nodos: %d\n", numNodos(varArbol));
+  //printf("Anula: %d\n", anula(varArbol));
+  //printf("Sustituye % por %: %d\n", , ,sustituye(varArbol));
   printf("Numero de nodos hoja: %d\n", numNodosHoja(varArbol));
   printf("Numero de nodos internos: %d\n", numNodosInternos(varArbol));
 
+  Tmp = buscarMax(varArbol);
+  printf("Buscar max: %d\n", Tmp->info); //Not working
 
+  Tmp = buscarMin(varArbol);
+  printf("Buscar min: %d\n", Tmp->info);
+  
   return 1;
 }
 

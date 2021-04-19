@@ -13,7 +13,18 @@
 ***********************************************/
 //Iniciamos todo a 0 menos la distancia que se inicia a infinito
 void iniciar(tipoGrafo *g) {
-
+  for(int i = 0; i < N; i++) {
+    g->directorio[i].alcanzado = 0;
+    g->directorio[i].gradoEntrada = 0;
+    g->directorio[i].ordenTop = 0;
+    g->directorio[i].distancia = INF;
+    g->directorio[i].peso = 0;
+    g->directorio[i].anterior = 0;
+    g->directorio[i].lista->v = 0;
+    g->directorio[i].lista->peso = 0;
+    g->directorio[i].lista->sig = NULL;
+  }
+  
 }
 
 void profundidadMejorado(int v_inicio,tipoGrafo *g) {

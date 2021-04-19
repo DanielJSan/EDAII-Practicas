@@ -23,7 +23,7 @@ int colaCreaVacia(Cola *c);
 
 int colaVacia(Cola *c);
 
-int colaInsertaC(Cola *c, tipoElemento elemento);
+int colaInserta(Cola *c, tipoElemento elemento);
 
 tipoElemento colaSuprime(Cola *c);
 

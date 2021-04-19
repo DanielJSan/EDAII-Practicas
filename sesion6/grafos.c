@@ -13,21 +13,48 @@
 ***********************************************/
 //Iniciamos todo a 0 menos la distancia que se inicia a infinito
 void iniciar(tipoGrafo *g) {
-  for(int i = 0; i < N; i++) {
+  pArco pArista;
+
+  for(int i = 1; i <= g->orden; i++) {
     g->directorio[i].alcanzado = 0;
     g->directorio[i].gradoEntrada = 0;
     g->directorio[i].ordenTop = 0;
     g->directorio[i].distancia = INF;
     g->directorio[i].peso = 0;
     g->directorio[i].anterior = 0;
-    g->directorio[i].lista->v = 0;
-    g->directorio[i].lista->peso = 0;
-    g->directorio[i].lista->sig = NULL;
   }
   
+  for(int i = 1; i <= g->orden; i++) {
+    pArista = g->directorio[i].lista;
+
+    while(pArista != NULL) {
+      g->directorio[pArista->v].gradoEntrada++;
+      pArista = pArista->sig;
+    }
+
+  } 
+
 }
 
 void profundidadMejorado(int v_inicio,tipoGrafo *g) {
+  int w;
+  pArco p;
+
+  iniciar(g);
+  
+  printf("%d ",v_inicio);
+  
+  profundidad(v_inicio, g);
+
+
+  for(int i = 1; i <= g->orden; i++) {
+
+    if (!g->directorio[i].alcanzado) {
+      profundidad(i, g);
+    }
+
+  }
+
 }
 
 void amplitudMejorado(int v_inicio,tipoGrafo *g) {

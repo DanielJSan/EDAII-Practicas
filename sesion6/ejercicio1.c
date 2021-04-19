@@ -21,12 +21,15 @@ int main(void)
   	printf("\nProfundidad: ");
 	iniciar(gT26);
   	profundidad(6,gT26);
+  printf("\nProfundidad mejorado: ");
+  iniciar(gT26);
+    profundidadMejorado(6,gT26);
  	printf("\nAmplitud : ");
 	iniciar(gT26);
  	amplitud(1,gT26);
-	printf("\nAmplitud : ");
+	printf("\nAmplitud mejorado: ");
 	iniciar(gT26);
- 	amplitud(6,gT26);
+ 	amplitudMejorado(6,gT26);
 	verGrafo(gT26);
 
 }
